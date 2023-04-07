@@ -25,6 +25,9 @@ using MinimalApi.Endpoint.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddApplicationInsightsTelemetry();
+
+builder.Services.AddControllers();
 builder.Services.AddEndpoints();
 
 // Use to force loading of appsettings.json of test project
@@ -82,7 +85,7 @@ builder.Services.AddCors(options =>
         });
 });
 
-builder.Services.AddControllers();
+
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 builder.Configuration.AddEnvironmentVariables();
 
@@ -153,7 +156,7 @@ if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
 }
 
-app.UseMiddleware<ExceptionMiddleware>();
+//app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseHttpsRedirection();
 
@@ -173,10 +176,15 @@ app.UseSwaggerUI(c =>
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
 });
 
+throw new Exception("Cannot move further");
+
+#pragma warning disable CS0162 // Unreachable code detected
 app.MapControllers();
+#pragma warning restore CS0162 // Unreachable code detected
 app.MapEndpoints();
 
 app.Logger.LogInformation("LAUNCHING PublicApi");
 app.Run();
+
 
 public partial class Program { }
