@@ -176,7 +176,7 @@ app.UseSwaggerUI(c =>
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
 });
 
-throw new Exception("Cannot move further");
+//throw new Exception("Cannot move further");
 
 #pragma warning disable CS0162 // Unreachable code detected
 app.MapControllers();
