@@ -60,21 +60,44 @@ public class CheckoutModel : PageModel
             await _basketService.SetQuantities(BasketModel.Id, updateModel);
             await _orderService.CreateOrderAsync(BasketModel.Id, new Address("123 Main St.", "Kent", "OH", "United States", "44240"));
 
+            #region order detail function
+            //var order = new OrderDetailModel
+            //{
+            //    OrderId = BasketModel.Id,
+            //    Items = items.Select(t => new OrderDetailItemModel
+            //    {
+            //        ItemId = t.Id,
+            //        Quantity = t.Quantity
+            //    }).ToList()
+            //};
+            //var json = JsonConvert.SerializeObject(order);
+            //var data = new StringContent(json, Encoding.UTF8, "application/json");
+            //var url = "https://eshoponweb-funcapp.azurewebsites.net/api/order/reserve";
+            //using (var client = new HttpClient())
+            //{
+            //    client.DefaultRequestHeaders.Add("x-functions-key", "qIDZ2-kl-tKD-XnORnhqYThMi8bhNsG1Dack5aMGqq2HAzFusvalzQ==");
+            //    var result = await client.PostAsync(url, data);
+            //} 
+            #endregion
+
             var order = new OrderDetailModel
             {
-                OrderId = BasketModel.Id,
+                ShippingAddress = "123 Main St., Kent, OH, United States, 44240",
                 Items = items.Select(t => new OrderDetailItemModel
                 {
-                    ItemId = t.Id,
+                    Id = t.Id,
+                    UnitPrice = t.UnitPrice,
                     Quantity = t.Quantity
-                }).ToList()
+                }).ToList(),
+                TotalPrice = items.Sum(t => t.UnitPrice * t.Quantity)
             };
+
             var json = JsonConvert.SerializeObject(order);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
-            var url = "https://eshoponweb-funcapp.azurewebsites.net/api/order/reserve";
+            var url = "https://eshoponweb-funcapp.azurewebsites.net/api/order/process";
             using (var client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Add("x-functions-key", "qIDZ2-kl-tKD-XnORnhqYThMi8bhNsG1Dack5aMGqq2HAzFusvalzQ==");
+                client.DefaultRequestHeaders.Add("x-functions-key", "87QK_jvkEMdAGixGfbu_hOxnKsjFyS24KwfJ1KB3gKjpAzFuG7RFIw==");
                 var result = await client.PostAsync(url, data);
             }
 
