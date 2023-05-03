@@ -80,26 +80,28 @@ public class CheckoutModel : PageModel
             //} 
             #endregion
 
-            var order = new OrderDetailModel
-            {
-                ShippingAddress = "123 Main St., Kent, OH, United States, 44240",
-                Items = items.Select(t => new OrderDetailItemModel
-                {
-                    Id = t.Id,
-                    UnitPrice = t.UnitPrice,
-                    Quantity = t.Quantity
-                }).ToList(),
-                TotalPrice = items.Sum(t => t.UnitPrice * t.Quantity)
-            };
+            #region order cosmosdb process function
+            //var order = new OrderDetailModel
+            //{
+            //    ShippingAddress = "123 Main St., Kent, OH, United States, 44240",
+            //    Items = items.Select(t => new OrderDetailItemModel
+            //    {
+            //        Id = t.Id,
+            //        UnitPrice = t.UnitPrice,
+            //        Quantity = t.Quantity
+            //    }).ToList(),
+            //    TotalPrice = items.Sum(t => t.UnitPrice * t.Quantity)
+            //};
 
-            var json = JsonConvert.SerializeObject(order);
-            var data = new StringContent(json, Encoding.UTF8, "application/json");
-            var url = "https://eshoponweb-funcapp.azurewebsites.net/api/order/process";
-            using (var client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Add("x-functions-key", "87QK_jvkEMdAGixGfbu_hOxnKsjFyS24KwfJ1KB3gKjpAzFuG7RFIw==");
-                var result = await client.PostAsync(url, data);
-            }
+            //var json = JsonConvert.SerializeObject(order);
+            //var data = new StringContent(json, Encoding.UTF8, "application/json");
+            //var url = "https://eshoponweb-funcapp.azurewebsites.net/api/order/process";
+            //using (var client = new HttpClient())
+            //{
+            //    client.DefaultRequestHeaders.Add("x-functions-key", "87QK_jvkEMdAGixGfbu_hOxnKsjFyS24KwfJ1KB3gKjpAzFuG7RFIw==");
+            //    var result = await client.PostAsync(url, data);
+            //} 
+            #endregion
 
             await _basketService.DeleteBasketAsync(BasketModel.Id);
 

@@ -20,21 +20,24 @@ public static class Dependencies
         {
             services.AddDbContext<CatalogContext>(c =>
                c.UseInMemoryDatabase("Catalog"));
-         
+
             services.AddDbContext<AppIdentityDbContext>(options =>
                 options.UseInMemoryDatabase("Identity"));
         }
         else
         {
+            var catalogDbConnection = configuration["CatalogDbConnection"];
+            var identityDbConnection = configuration["IdentityDbConnection"];
+
             // use real database
             // Requires LocalDB which can be installed with SQL Server Express 2016
             // https://www.microsoft.com/en-us/download/details.aspx?id=54284
             services.AddDbContext<CatalogContext>(c =>
-                c.UseSqlServer(configuration.GetConnectionString("CatalogConnection")));
+                c.UseSqlServer(catalogDbConnection));
 
             // Add Identity DbContext
             services.AddDbContext<AppIdentityDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("IdentityConnection")));
+                options.UseSqlServer(identityDbConnection));
         }
     }
 }
