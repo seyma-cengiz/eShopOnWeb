@@ -75,16 +75,16 @@ public class CheckoutModel : PageModel
             //};
             //var json = JsonSerializer.Serialize(order);
             //var data = new StringContent(json, Encoding.UTF8, "application/json");
-            //var url = "https://eshoponweb-funcapp.azurewebsites.net/api/order/reserve";
+            //var url = "";
             //using (var client = new HttpClient())
             //{
-            //    client.DefaultRequestHeaders.Add("x-functions-key", "qIDZ2-kl-tKD-XnORnhqYThMi8bhNsG1Dack5aMGqq2HAzFusvalzQ==");
+            //    client.DefaultRequestHeaders.Add("x-functions-key", "");
             //    var result = await client.PostAsync(url, data);
             //}
             #endregion
 
             #region order item messagebus
-            var serviceBusConnectionString = _configuration.GetValue<string>("ServiceBusConnectionString");
+            var serviceBusConnectionString = _configuration["ServiceBusConnection"];
             string queueName = "order-items-reserver-queue";
 
             await using var serviceBusClient = new ServiceBusClient(serviceBusConnectionString);
@@ -130,7 +130,7 @@ public class CheckoutModel : PageModel
 
             var json = JsonConvert.SerializeObject(order);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
-            var url = "https://eshoponweb-funcapp.azurewebsites.net/api/order/process";
+            var url = _configuration["OrderProcesssFunctionUri"];
             using (var httpClient = new HttpClient())
             {
                 httpClient.DefaultRequestHeaders.Add("x-functions-key", "32u7BqNYyBYHVVwGz_RgUd4w89pzVn9zvBUZPhY9upSoAzFutCMBqA==");

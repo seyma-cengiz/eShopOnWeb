@@ -23,10 +23,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Logging.AddConsole();
 
 #region key-vault
-//var vaultName = "eshoponweb-vaultstorage";// builder.Configuration.GetValue<string>("VaultName");
-//Uri vaultUri = new Uri($"https://{vaultName}.vault.azure.net/");
-
-//builder.Configuration.AddAzureKeyVault(vaultUri, new DefaultAzureCredential()); 
+Uri vaultUri = new Uri($"https://eshoponweb-keyvault.vault.azure.net/");
+builder.Configuration.AddAzureKeyVault(vaultUri, new DefaultAzureCredential());
 #endregion
 
 Microsoft.eShopWeb.Infrastructure.Dependencies.ConfigureServices(builder.Configuration, builder.Services);
