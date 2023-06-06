@@ -1,13 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
-namespace Microsoft.eShopWeb.Web.Models;
-
+namespace OrderItemsReserverQueue.Models;
 public class OrderDetailModel
 {
     [JsonProperty("order-id")]
     public int OrderId { get; set; }
     [JsonProperty("items")]
-    public IReadOnlyCollection<OrderDetailItemModel>? Items { get; set; }
+    public IReadOnlyCollection<OrderDetailItemModel> Items { get; set; }
 }
 
 public class OrderDetailItemModel

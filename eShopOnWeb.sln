@@ -41,9 +41,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorShared", "src\BlazorS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PublicApiIntegrationTests", "tests\PublicApiIntegrationTests\PublicApiIntegrationTests.csproj", "{D53EF010-8F8C-4337-A059-456E19D8AE63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderItemsReserver", "src\OrderItemsReserver\OrderItemsReserver.csproj", "{A5006738-FC0E-4400-882E-83A476A3D0CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderItemsReserver", "src\OrderItemsReserver\OrderItemsReserver.csproj", "{A5006738-FC0E-4400-882E-83A476A3D0CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderProcess", "src\OrderProcess\OrderProcess.csproj", "{A3FF0D22-D092-43CB-ADCC-D56C9DE9D6AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderProcess", "src\OrderProcess\OrderProcess.csproj", "{A3FF0D22-D092-43CB-ADCC-D56C9DE9D6AC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderItemsReserverQueue", "src\OrderItemsReserverQueue\OrderItemsReserverQueue.csproj", "{E50DFDB0-DECC-4AB0-936A-08F697B34F56}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,6 +105,10 @@ Global
 		{A3FF0D22-D092-43CB-ADCC-D56C9DE9D6AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3FF0D22-D092-43CB-ADCC-D56C9DE9D6AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3FF0D22-D092-43CB-ADCC-D56C9DE9D6AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E50DFDB0-DECC-4AB0-936A-08F697B34F56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E50DFDB0-DECC-4AB0-936A-08F697B34F56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E50DFDB0-DECC-4AB0-936A-08F697B34F56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E50DFDB0-DECC-4AB0-936A-08F697B34F56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -120,6 +126,7 @@ Global
 		{D53EF010-8F8C-4337-A059-456E19D8AE63} = {15EA4737-125B-4E6E-A806-E13B7EBCDCCF}
 		{A5006738-FC0E-4400-882E-83A476A3D0CC} = {419A6ACE-0419-4315-A6FB-B0E63D39432E}
 		{A3FF0D22-D092-43CB-ADCC-D56C9DE9D6AC} = {419A6ACE-0419-4315-A6FB-B0E63D39432E}
+		{E50DFDB0-DECC-4AB0-936A-08F697B34F56} = {419A6ACE-0419-4315-A6FB-B0E63D39432E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {49813262-5DA3-4D61-ABD3-493C74CE8C2B}

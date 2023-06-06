@@ -21,7 +21,7 @@
     },
     "resourceName": {
       "type": "string",
-      "defaultValue": "eshoponweb-app",
+      "defaultValue": "eshoponweb-eu",
       "metadata": {
         "description": "Name of the main resource to be created by this template."
       }
